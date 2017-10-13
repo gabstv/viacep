@@ -41,6 +41,7 @@ func Consulta(cep string) (*Result, error) {
 	if err != nil {
 		return nil, err
 	}
+	resp.Body.Close()
 	err = json.Unmarshal(scep.Bytes(), res)
 	if err != nil {
 		return nil, err
