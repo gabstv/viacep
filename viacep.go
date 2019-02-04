@@ -33,12 +33,14 @@ func Consulta(cep string) (*Result, error) {
 		return nil, err
 	}
 	if resp.StatusCode != http.StatusOK {
+		resp.Body.Close()
 		return nil, fmt.Errorf("http status code %v", resp.StatusCode)
 	}
 	res := &Result{}
 	scep.Reset()
 	_, err = io.Copy(&scep, resp.Body)
 	if err != nil {
+		resp.Body.Close()
 		return nil, err
 	}
 	resp.Body.Close()
