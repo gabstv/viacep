@@ -28,7 +28,7 @@ func Consulta(cep string) (*Result, error) {
 			scep.WriteRune(v)
 		}
 	}
-	resp, err := http.Get("https://viacep.com.br/ws/" + scep.String() + "/json/unicode/")
+	resp, err := http.Get("https://viacep.com.br/ws/" + scep.String() + "/json/")
 	if err != nil {
 		return nil, err
 	}
